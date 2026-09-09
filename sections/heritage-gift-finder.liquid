@@ -1,0 +1,98 @@
+{% liquid
+  assign finder_collection = section.settings.collection
+  assign finder_url = routes.all_products_collection_url
+  if finder_collection != blank
+    assign finder_url = finder_collection.url
+  endif
+%}
+
+<section class="heritage-gift-finder section section--page-width" data-heritage-gift-finder>
+  <div class="heritage-gift-finder__shell">
+    <header class="heritage-gift-finder__header">
+      {% if section.settings.kicker != blank %}<p class="heritage-kicker">{{ section.settings.kicker }}</p>{% endif %}
+      <h2 class="heritage-section-heading">{{ section.settings.heading }}</h2>
+      {% if section.settings.description != blank %}<p class="heritage-section-copy">{{ section.settings.description }}</p>{% endif %}
+    </header>
+
+    <form class="heritage-gift-finder__form" action="{{ finder_url }}" method="get" data-gift-finder-form>
+      {% assign dimensions = 'recipient,occasion,budget' | split: ',' %}
+      {% for dimension in dimensions %}
+        {% assign option_count = 0 %}
+        {% capture dimension_options %}
+          {% for block in section.blocks %}
+            {% if block.settings.dimension == dimension %}
+              {% assign option_count = option_count | plus: 1 %}
+              <label class="heritage-gift-finder__chip" {{ block.shopify_attributes }}>
+                <input type="radio" name="gift-finder-{{ section.id }}-{{ dimension }}" value="{{ block.settings.value | escape }}" data-filter-dimension="{{ dimension }}">
+                <span>{{ block.settings.label }}</span>
+              </label>
+            {% endif %}
+          {% endfor %}
+        {% endcapture %}
+        {% if option_count > 0 %}
+          <fieldset class="heritage-gift-finder__group">
+            <legend>
+              {% case dimension %}
+                {% when 'recipient' %}Who are you shopping for?
+                {% when 'occasion' %}What is the occasion?
+                {% when 'budget' %}What is your budget?
+              {% endcase %}
+            </legend>
+            <div class="heritage-gift-finder__chips">{{ dimension_options }}</div>
+          </fieldset>
+        {% endif %}
+      {% endfor %}
+
+      <div class="heritage-gift-finder__action">
+        <button class="button" type="submit" disabled data-gift-finder-submit>{{ section.settings.button_label }}</button>
+        <p class="heritage-gift-finder__hint">Choose one or more options to see matching gifts.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heritage gift finder",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "A quicker way to choose" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Find their gift" },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Tell us a little about the moment and we will narrow down the collection." },
+    { "type": "collection", "id": "collection", "label": "Base collection" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Find gifts" }
+  ],
+  "blocks": [
+    {
+      "type": "option",
+      "name": "Finder option",
+      "settings": [
+        {
+          "type": "select",
+          "id": "dimension",
+          "label": "Question",
+          "options": [
+            { "value": "recipient", "label": "Recipient" },
+            { "value": "occasion", "label": "Occasion" },
+            { "value": "budget", "label": "Budget" }
+          ],
+          "default": "recipient"
+        },
+        { "type": "text", "id": "label", "label": "Label", "default": "For her" },
+        { "type": "text", "id": "value", "label": "Filter value", "default": "For her", "info": "Recipient and occasion values must match the product metafield exactly. Enter a number only for budget." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heritage gift finder",
+      "blocks": [
+        { "type": "option", "settings": { "dimension": "recipient", "label": "For her", "value": "For her" } },
+        { "type": "option", "settings": { "dimension": "recipient", "label": "For him", "value": "For him" } },
+        { "type": "option", "settings": { "dimension": "occasion", "label": "Birthday", "value": "Birthday" } },
+        { "type": "option", "settings": { "dimension": "occasion", "label": "Anniversary", "value": "Anniversary" } },
+        { "type": "option", "settings": { "dimension": "budget", "label": "Under $50", "value": "50" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

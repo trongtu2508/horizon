@@ -1,0 +1,1448 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Playbook nâng cấp homepage Meilyzjn theo định hướng khám phá và chuyển đổi từ Hallmark."
+    >
+    <title>Playbook nâng cấp Homepage Meilyzjn</title>
+    <style>
+      :root {
+        --ivory: #f8f3ea;
+        --paper: #fffdf8;
+        --teal: #184d4f;
+        --teal-deep: #103a3c;
+        --charcoal: #253333;
+        --muted: #716d67;
+        --rose: #e7c6be;
+        --sage: #cbd8c8;
+        --gold: #b58a52;
+        --border: #ded8ce;
+        --white: #ffffff;
+        --max-width: 1200px;
+        --shadow: 0 24px 70px rgba(37, 51, 51, 0.09);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 8% 4%, rgba(231, 198, 190, 0.5), transparent 25rem),
+          linear-gradient(180deg, #f5eee3 0, var(--ivory) 34rem);
+        color: var(--charcoal);
+        font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--teal);
+        text-underline-offset: 0.2em;
+      }
+
+      a:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 4px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      p {
+        margin-top: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 500;
+        line-height: 1.08;
+        text-wrap: balance;
+      }
+
+      h1 {
+        max-width: 780px;
+        margin-bottom: 1.25rem;
+        color: var(--white);
+        font-size: clamp(2.7rem, 7vw, 5.8rem);
+        letter-spacing: -0.045em;
+      }
+
+      h2 {
+        margin-bottom: 1rem;
+        color: var(--teal-deep);
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        letter-spacing: -0.025em;
+      }
+
+      h3 {
+        margin-bottom: 0.75rem;
+        font-size: clamp(1.35rem, 2.4vw, 2rem);
+      }
+
+      code {
+        padding: 0.08rem 0.35rem;
+        border: 1px solid var(--border);
+        border-radius: 0.25rem;
+        background: rgba(255, 255, 255, 0.7);
+        color: var(--teal-deep);
+        font-size: 0.9em;
+      }
+
+      .shell {
+        width: min(calc(100% - 2rem), var(--max-width));
+        margin-inline: auto;
+      }
+
+      .cover {
+        position: relative;
+        overflow: hidden;
+        min-height: 680px;
+        padding: clamp(2rem, 5vw, 4.5rem) 0;
+        background:
+          linear-gradient(115deg, rgba(16, 58, 60, 0.98), rgba(24, 77, 79, 0.9)),
+          var(--teal);
+      }
+
+      .cover::before,
+      .cover::after {
+        position: absolute;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        content: "";
+      }
+
+      .cover::before {
+        top: -20rem;
+        right: -13rem;
+        width: 42rem;
+        height: 42rem;
+      }
+
+      .cover::after {
+        right: 8%;
+        bottom: -12rem;
+        width: 25rem;
+        height: 25rem;
+        background: rgba(231, 198, 190, 0.08);
+      }
+
+      .cover__inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        min-height: 570px;
+        align-content: space-between;
+        gap: 4rem;
+      }
+
+      .eyebrow {
+        margin-bottom: 1rem;
+        color: var(--gold);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .cover__lead {
+        max-width: 680px;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.82);
+        font-size: clamp(1.05rem, 2vw, 1.3rem);
+      }
+
+      .cover__meta {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .meta-card {
+        min-height: 112px;
+        padding: 1.25rem;
+        background: rgba(16, 58, 60, 0.88);
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.88rem;
+      }
+
+      .meta-card strong {
+        display: block;
+        margin-bottom: 0.35rem;
+        color: var(--white);
+        font-size: 1rem;
+      }
+
+      .document {
+        position: relative;
+        z-index: 2;
+        margin-top: -3rem;
+        margin-bottom: 5rem;
+        padding: clamp(1.25rem, 4vw, 4rem);
+        border: 1px solid rgba(222, 216, 206, 0.8);
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+
+      .toc {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(18rem, 0.9fr);
+        gap: clamp(2rem, 5vw, 5rem);
+        padding-bottom: clamp(3rem, 7vw, 6rem);
+        border-bottom: 1px solid var(--border);
+      }
+
+      .toc__links {
+        margin: 0;
+        padding: 0;
+        border-top: 1px solid var(--border);
+        list-style: none;
+      }
+
+      .toc__links a {
+        display: flex;
+        gap: 1rem;
+        justify-content: space-between;
+        padding: 0.85rem 0;
+        border-bottom: 1px solid var(--border);
+        color: var(--charcoal);
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .toc__links a::after {
+        color: var(--gold);
+        content: "→";
+      }
+
+      .score {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .score__item {
+        min-height: 132px;
+        padding: 1.25rem;
+        background: var(--ivory);
+      }
+
+      .score__number {
+        display: block;
+        color: var(--teal);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 2.4rem;
+        line-height: 1;
+      }
+
+      .score__label {
+        display: block;
+        margin-top: 0.55rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      .content-section {
+        padding: clamp(3rem, 7vw, 6rem) 0;
+        border-bottom: 1px solid var(--border);
+        scroll-margin-top: 1rem;
+      }
+
+      .content-section:last-child {
+        border-bottom: 0;
+      }
+
+      .section-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 0.65fr) minmax(0, 1.35fr);
+        gap: clamp(1.5rem, 5vw, 5rem);
+        margin-bottom: 2.25rem;
+      }
+
+      .section-intro p:last-child {
+        margin-bottom: 0;
+      }
+
+      .lead {
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 1.08rem;
+      }
+
+      .callout {
+        margin: 1.75rem 0;
+        padding: 1.4rem 1.5rem;
+        border-left: 4px solid var(--gold);
+        background: color-mix(in srgb, var(--sage) 38%, var(--paper));
+      }
+
+      .callout strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: var(--teal-deep);
+      }
+
+      .callout--risk {
+        border-left-color: #a55a49;
+        background: color-mix(in srgb, var(--rose) 45%, var(--paper));
+      }
+
+      .table-wrap {
+        max-width: 100%;
+        overflow-x: auto;
+        margin: 1.75rem 0;
+        border: 1px solid var(--border);
+      }
+
+      table {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+        background: var(--white);
+      }
+
+      th,
+      td {
+        padding: 1rem 1.1rem;
+        border-right: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th:last-child,
+      td:last-child {
+        border-right: 0;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      th {
+        background: var(--teal);
+        color: var(--white);
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      tbody tr:nth-child(even) {
+        background: color-mix(in srgb, var(--ivory) 60%, var(--white));
+      }
+
+      .status {
+        display: inline-block;
+        padding: 0.2rem 0.55rem;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        color: #9b4c3d;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .status--ready {
+        color: #2f765e;
+      }
+
+      .playbook-list {
+        display: grid;
+        gap: 1.25rem;
+        counter-reset: playbook;
+      }
+
+      .playbook-card {
+        display: grid;
+        grid-template-columns: 5rem minmax(0, 1fr);
+        gap: clamp(1.2rem, 3vw, 2.5rem);
+        padding: clamp(1.35rem, 3vw, 2.3rem);
+        border: 1px solid var(--border);
+        background: var(--white);
+        break-inside: avoid;
+        counter-increment: playbook;
+      }
+
+      .playbook-card::before {
+        color: var(--gold);
+        content: counter(playbook, decimal-leading-zero);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 2.8rem;
+        line-height: 1;
+      }
+
+      .playbook-card__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        margin-top: 1.25rem;
+      }
+
+      .playbook-card__grid h4 {
+        margin-bottom: 0.35rem;
+        color: var(--teal);
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .playbook-card__grid p,
+      .playbook-card__grid ul {
+        margin-bottom: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .playbook-card__grid ul {
+        padding-left: 1.1rem;
+      }
+
+      .two-column {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+      }
+
+      .panel {
+        padding: clamp(1.25rem, 3vw, 2rem);
+        border: 1px solid var(--border);
+        background: var(--white);
+        break-inside: avoid;
+      }
+
+      .panel--teal {
+        border-color: var(--teal);
+        background: var(--teal);
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .panel--teal h3,
+      .panel--teal strong {
+        color: var(--white);
+      }
+
+      .panel ul,
+      .panel ol {
+        margin-bottom: 0;
+        padding-left: 1.2rem;
+      }
+
+      .panel li + li {
+        margin-top: 0.45rem;
+      }
+
+      .sequence {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 1px;
+        margin: 2rem 0;
+        background: var(--border);
+      }
+
+      .sequence__step {
+        position: relative;
+        min-height: 155px;
+        padding: 1.25rem;
+        background: var(--ivory);
+      }
+
+      .sequence__step span {
+        display: block;
+        margin-bottom: 1.5rem;
+        color: var(--gold);
+        font-weight: 750;
+      }
+
+      .sequence__step strong {
+        color: var(--teal-deep);
+      }
+
+      .checklist {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.7rem 1.25rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .checklist li {
+        position: relative;
+        min-height: 3.2rem;
+        padding: 0.75rem 0.85rem 0.75rem 2.75rem;
+        border: 1px solid var(--border);
+        background: var(--white);
+        break-inside: avoid;
+      }
+
+      .checklist li::before {
+        position: absolute;
+        top: 0.82rem;
+        left: 0.9rem;
+        width: 1rem;
+        height: 1rem;
+        border: 1.5px solid var(--teal);
+        content: "";
+      }
+
+      .priority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .priority {
+        padding: 1.4rem;
+        border-top: 5px solid var(--teal);
+        background: var(--ivory);
+      }
+
+      .priority:nth-child(2) {
+        border-top-color: var(--gold);
+      }
+
+      .priority:nth-child(3) {
+        border-top-color: var(--rose);
+      }
+
+      .priority strong {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--teal-deep);
+      }
+
+      .source-note {
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+
+      .document-footer {
+        display: flex;
+        gap: 2rem;
+        justify-content: space-between;
+        padding-top: 3rem;
+        color: var(--muted);
+        font-size: 0.82rem;
+      }
+
+      @media (max-width: 820px) {
+        .cover {
+          min-height: auto;
+        }
+
+        .cover__inner {
+          min-height: 620px;
+        }
+
+        .cover__meta,
+        .score,
+        .two-column,
+        .checklist,
+        .priority-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .toc,
+        .section-intro {
+          grid-template-columns: 1fr;
+        }
+
+        .playbook-card__grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sequence {
+          grid-template-columns: 1fr;
+        }
+
+        .sequence__step {
+          min-height: auto;
+        }
+      }
+
+      @media (max-width: 560px) {
+        body {
+          font-size: 15px;
+        }
+
+        .shell {
+          width: min(calc(100% - 1rem), var(--max-width));
+        }
+
+        .cover__inner {
+          min-height: 700px;
+        }
+
+        .cover__meta,
+        .score,
+        .two-column,
+        .checklist,
+        .priority-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .document {
+          margin-top: -1.5rem;
+          padding-inline: 1rem;
+        }
+
+        .playbook-card {
+          grid-template-columns: 1fr;
+        }
+
+        .playbook-card::before {
+          font-size: 2rem;
+        }
+      }
+
+      @media print {
+        @page {
+          margin: 14mm;
+          size: A4;
+        }
+
+        html {
+          scroll-behavior: auto;
+        }
+
+        body {
+          background: var(--white);
+          color: #111;
+          font-size: 10pt;
+          print-color-adjust: exact;
+          -webkit-print-color-adjust: exact;
+        }
+
+        .shell {
+          width: 100%;
+        }
+
+        .cover {
+          min-height: 245mm;
+          break-after: page;
+        }
+
+        .cover__inner {
+          min-height: 225mm;
+        }
+
+        .document {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          box-shadow: none;
+        }
+
+        .content-section {
+          padding: 16mm 0;
+        }
+
+        .toc,
+        .playbook-card,
+        .panel,
+        .callout,
+        .table-wrap,
+        tr,
+        .priority,
+        .checklist li {
+          break-inside: avoid;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        .toc__links a::after {
+          content: "";
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="cover">
+      <div class="cover__inner shell">
+        <div>
+          <p class="eyebrow">Homepage commerce playbook · Phiên bản 1.0</p>
+          <h1>Nâng cấp Homepage Meilyzjn theo định hướng Hallmark</h1>
+          <p class="cover__lead">
+            Kế hoạch biến homepage Heritage hiện tại thành một hành trình khám phá quà tặng rõ ràng,
+            giàu hình ảnh và có khả năng chuyển đổi tốt hơn, nhưng vẫn giữ bản sắc riêng của Meilyzjn.
+          </p>
+        </div>
+
+        <div class="cover__meta" aria-label="Thông tin tài liệu">
+          <div class="meta-card">
+            <strong>Baseline</strong>
+            meilyzjn.co sau khi refresh theme Heritage
+          </div>
+          <div class="meta-card">
+            <strong>Tham chiếu</strong>
+            Hallmark homepage, mobile viewport
+          </div>
+          <div class="meta-card">
+            <strong>Ưu tiên</strong>
+            Khám phá sản phẩm và chuyển đổi
+          </div>
+          <div class="meta-card">
+            <strong>Phạm vi</strong>
+            Homepage, header và footer
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="document shell">
+      <section class="toc" aria-labelledby="toc-title">
+        <div>
+          <p class="eyebrow">Mục tiêu tài liệu</p>
+          <h2 id="toc-title">Từ bản thiết kế đẹp sang storefront có thể bán hàng</h2>
+          <p class="lead">
+            Theme mới đã thiết lập đúng màu sắc, typography và cấu trúc cảm xúc. Khoảng cách lớn nhất
+            hiện nay nằm ở merchandising: chưa có ảnh, collection thật, sản phẩm đủ mạnh, review thật
+            và các đường dẫn giúp khách đi từ ý định mua quà đến sản phẩm phù hợp.
+          </p>
+          <div class="callout">
+            <strong>Quyết định cốt lõi</strong>
+            Học Hallmark về hierarchy, mật độ lối vào mua sắm và cách luân phiên giữa campaign,
+            category, sản phẩm và nội dung. Không sao chép tài sản, nội dung hay nhận diện Hallmark.
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow">Mục lục</p>
+          <nav aria-label="Mục lục playbook">
+            <ol class="toc__links">
+              <li><a href="#baseline">Hiện trạng và bằng chứng</a></li>
+              <li><a href="#comparison">Đối chiếu Hallmark</a></li>
+              <li><a href="#homepage">Playbook 9 section</a></li>
+              <li><a href="#global">Header, footer và thiết kế</a></li>
+              <li><a href="#implementation">Hướng dẫn implementation</a></li>
+              <li><a href="#content">Content readiness</a></li>
+              <li><a href="#acceptance">Kiểm thử và nghiệm thu</a></li>
+            </ol>
+          </nav>
+        </div>
+      </section>
+
+      <section class="content-section" id="baseline">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">01 · Baseline</p>
+            <h2>Homepage mới đã lên sóng, nhưng dữ liệu vẫn là bản nháp</h2>
+          </div>
+          <div>
+            <p class="lead">
+              Sau khi refresh, URL công khai đã hiển thị đúng cấu trúc Heritage gồm hero, occasion,
+              best sellers, editorial, curated collections, trust và testimonials. Tuy nhiên trải nghiệm
+              thực tế vẫn chưa đủ điều kiện phát hành chính thức.
+            </p>
+          </div>
+        </div>
+
+        <div class="score" aria-label="Các chỉ số hiện trạng">
+          <div class="score__item">
+            <span class="score__number">10/10</span>
+            <span class="score__label">Category card đang dùng placeholder thay cho ảnh thật</span>
+          </div>
+          <div class="score__item">
+            <span class="score__number">1</span>
+            <span class="score__label">Sản phẩm xuất hiện trong Best sellers và đang sold out</span>
+          </div>
+          <div class="score__item">
+            <span class="score__number">13</span>
+            <span class="score__label">CTA/category link chính đang cùng trỏ về <code>/collections/all</code></span>
+          </div>
+          <div class="score__item">
+            <span class="score__number">0</span>
+            <span class="score__label">Ảnh hero, ảnh editorial và review khách hàng đã xác thực</span>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Khu vực</th>
+                <th>Đã làm tốt</th>
+                <th>Vấn đề hiện tại</th>
+                <th>Mức độ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nhận diện</td>
+                <td>Teal, ivory, Cormorant và Manrope tạo cảm giác quà tặng cao cấp.</td>
+                <td>Logo đang hiển thị dạng chữ; metadata vẫn còn tên HapiGifts.</td>
+                <td><span class="status">Cao</span></td>
+              </tr>
+              <tr>
+                <td>Hero</td>
+                <td>Headline ngắn, dễ hiểu, CTA nổi bật.</td>
+                <td>Không có ảnh nên thiếu bối cảnh sản phẩm và cảm xúc thương hiệu.</td>
+                <td><span class="status">Cao</span></td>
+              </tr>
+              <tr>
+                <td>Danh mục</td>
+                <td>Đã phân nhóm occasion và curated collections.</td>
+                <td>Không có ảnh, không có link chuyên biệt, nhiều collection đang rỗng.</td>
+                <td><span class="status">Cao</span></td>
+              </tr>
+              <tr>
+                <td>Sản phẩm</td>
+                <td>Product card có wishlist, badge và giá.</td>
+                <td>Một sản phẩm sold out không đủ tạo niềm tin hoặc lựa chọn mua sắm.</td>
+                <td><span class="status">Cao</span></td>
+              </tr>
+              <tr>
+                <td>Niềm tin</td>
+                <td>Đã có bốn cam kết dịch vụ cơ bản.</td>
+                <td>Thiếu icon và bằng chứng; testimonial hiện là nội dung mẫu.</td>
+                <td><span class="status">Cao</span></td>
+              </tr>
+              <tr>
+                <td>Footer</td>
+                <td>Policy links của Shopify vẫn truy cập được.</td>
+                <td>Thiếu menu, newsletter, contact, social và payment methods.</td>
+                <td><span class="status">Trung bình</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout--risk">
+          <strong>Rủi ro phát hành</strong>
+          Nếu chỉ hoàn thiện CSS mà chưa bổ sung catalog và merchandising, homepage sẽ trông sạch hơn
+          nhưng vẫn không giúp khách tìm thấy món quà phù hợp hoặc tạo đủ lý do để mua.
+        </div>
+      </section>
+
+      <section class="content-section" id="comparison">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">02 · Benchmark</p>
+            <h2>Hallmark thắng bằng số lượng lối vào mua sắm</h2>
+          </div>
+          <div>
+            <p class="lead">
+              Hallmark không phụ thuộc vào một hero đẹp. Trang liên tục đưa ra lựa chọn kế tiếp:
+              campaign, category, occasion, offer, brand, sản phẩm, nội dung và membership. Meilyzjn
+              nên áp dụng nguyên tắc này ở quy mô gọn hơn, phù hợp với catalog đang phát triển.
+            </p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tiêu chí</th>
+                <th>Hallmark</th>
+                <th>Meilyzjn hiện tại</th>
+                <th>Bài học áp dụng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nhịp homepage</td>
+                <td>Khoảng 11 cụm nội dung chính, luân phiên commerce và editorial.</td>
+                <td>7 section, phần lớn chưa có nội dung thị giác.</td>
+                <td>Dùng 9 section trọng tâm thay vì sao chép toàn bộ độ dài Hallmark.</td>
+              </tr>
+              <tr>
+                <td>Hình ảnh</td>
+                <td>Khoảng 59 ảnh trên mobile benchmark.</td>
+                <td>Chỉ ảnh của một sản phẩm; hero/category/editorial không có ảnh.</td>
+                <td>Mỗi section phải có vai trò hình ảnh rõ ràng, tránh placeholder khi public.</td>
+              </tr>
+              <tr>
+                <td>Khám phá</td>
+                <td>Nhiều lối vào theo category, occasion, brand, trend và offer.</td>
+                <td>Category card cùng trỏ về All products.</td>
+                <td>Điều hướng theo occasion, recipient và filter intent.</td>
+              </tr>
+              <tr>
+                <td>Sản phẩm</td>
+                <td>Product carousel có giá, offer và Add to cart.</td>
+                <td>Một product card sold out, không có lựa chọn thay thế.</td>
+                <td>Đưa 6–8 sản phẩm còn hàng lên sớm và hỗ trợ Quick Add.</td>
+              </tr>
+              <tr>
+                <td>Khuyến mãi</td>
+                <td>Offer xuất hiện trong announcement và dedicated deals section.</td>
+                <td>Chỉ có thông báo free shipping $75+.</td>
+                <td>Giữ offer trung thực, cấu hình động và chỉ hiển thị khi đang hiệu lực.</td>
+              </tr>
+              <tr>
+                <td>Nội dung</td>
+                <td>Có Ideas &amp; Inspiration và hệ sinh thái Hallmark+.</td>
+                <td>Editorial chung chung, CTA sai đích.</td>
+                <td>Tập trung trước vào câu chuyện cá nhân hóa và cách đặt hàng.</td>
+              </tr>
+              <tr>
+                <td>Social proof</td>
+                <td>Có quy mô thương hiệu, membership và nhiều tín hiệu tin cậy.</td>
+                <td>Ba lời chứng thực mẫu chưa xác thực.</td>
+                <td>Chỉ dùng review thật từ app; ẩn section nếu chưa có dữ liệu.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="content-section" id="homepage">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">03 · Homepage architecture</p>
+            <h2>Playbook 9 section ưu tiên chuyển đổi</h2>
+          </div>
+          <div>
+            <p class="lead">
+              Thứ tự mới đưa sản phẩm và các intent mua quà lên sớm, sau đó mới mở rộng bằng finder,
+              recipient, campaign và câu chuyện thương hiệu. Header và footer không tính vào 9 section.
+            </p>
+          </div>
+        </div>
+
+        <div class="playbook-list">
+          <article class="playbook-card">
+            <div>
+              <h3>Campaign hero</h3>
+              <p>Một thông điệp, một hình ảnh chính và một hành động ưu tiên.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Mục tiêu</h4>
+                  <p>Giải thích ngay Meilyzjn bán quà cá nhân hóa cho ai và vì sao đáng mua.</p>
+                </div>
+                <div>
+                  <h4>Thiết kế</h4>
+                  <p>Hero tĩnh; ảnh desktop/mobile riêng; overlay có kiểm soát; tối đa hai CTA.</p>
+                </div>
+                <div>
+                  <h4>Nghiệm thu</h4>
+                  <p>Không lazy-load ảnh hero, text không nhúng vào ảnh, CTA trỏ đúng campaign.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="playbook-card">
+            <div>
+              <h3>Shop by occasion</h3>
+              <p>Biến nhu cầu theo dịp thành lối vào trực quan đầu tiên.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Nội dung</h4>
+                  <p>Birthday, Anniversary, Memorial, Graduation, Christmas và dịp theo mùa.</p>
+                </div>
+                <div>
+                  <h4>Responsive</h4>
+                  <p>Lưới desktop; horizontal snap carousel trên mobile để giảm chiều dài trang.</p>
+                </div>
+                <div>
+                  <h4>Quy tắc</h4>
+                  <p>Chỉ render card có ảnh và collection/link hợp lệ; không fallback về All products.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="playbook-card">
+            <div>
+              <h3>Best sellers</h3>
+              <p>Đưa bằng chứng sản phẩm và cơ hội Add to cart lên trước fold thứ ba.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Sản phẩm</h4>
+                  <p>6–8 sản phẩm còn hàng, có ảnh nhất quán, giá, badge và variant hợp lệ.</p>
+                </div>
+                <div>
+                  <h4>Tương tác</h4>
+                  <p>Quick Add, wishlist; 4 cột desktop và carousel mobile.</p>
+                </div>
+                <div>
+                  <h4>Khả dụng</h4>
+                  <p>Tiêu đề giới hạn 2–3 dòng; sold-out card không chiếm vị trí đầu danh sách.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="playbook-card">
+            <div>
+              <h3>Quick Gift Finder</h3>
+              <p>Một công cụ ngắn giúp khách chuyển từ ý định sang collection đã lọc.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Đầu vào</h4>
+                  <p>Recipient, Occasion và Budget; mỗi nhóm cho phép một lựa chọn.</p>
+                </div>
+                <div>
+                  <h4>Đầu ra</h4>
+                  <p>Tạo URL Shopify storefront filters trên base collection được cấu hình.</p>
+                </div>
+                <div>
+                  <h4>Fallback</h4>
+                  <p>CTA bị disable khi chưa có lựa chọn; bỏ qua dimension không được chọn.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="playbook-card">
+            <div>
+              <h3>Shop by recipient</h3>
+              <p>Phục hồi thế mạnh taxonomy cũ theo quan hệ người nhận.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Nội dung</h4>
+                  <p>Mother, Father, Couples, Best Friends, Grandparents và Yourself.</p>
+                </div>
+                <div>
+                  <h4>Thiết kế</h4>
+                  <p>Ảnh người nhận/bối cảnh quà tặng; lưới 3 cột desktop, 2 cột mobile.</p>
+                </div>
+                <div>
+                  <h4>Merchandising</h4>
+                  <p>Ưu tiên collection có đủ sản phẩm; tự ẩn card trống khỏi storefront.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="playbook-card">
+            <div>
+              <h3>Featured collections</h3>
+              <p>Không gian linh hoạt cho product type, newness và campaign theo mùa.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Khởi tạo</h4>
+                  <p>Ưu tiên Ornament, New Arrivals và campaign seasonal khi có sản phẩm.</p>
+                </div>
+                <div>
+                  <h4>Thiết kế</h4>
+                  <p>3–4 card lớn, mỗi card có ảnh, tiêu đề ngắn và một đường dẫn cụ thể.</p>
+                </div>
+                <div>
+                  <h4>Vận hành</h4>
+                  <p>Merchant thay campaign trong Theme Editor mà không cần sửa Liquid.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="playbook-card">
+            <div>
+              <h3>Personalization story</h3>
+              <p>Thay editorial chung chung bằng lý do tin tưởng dịch vụ cá nhân hóa.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Nội dung</h4>
+                  <p>Giải thích cách cá nhân hóa, kiểm duyệt thiết kế và giá trị cảm xúc.</p>
+                </div>
+                <div>
+                  <h4>CTA</h4>
+                  <p>Dẫn tới trang How to Order thay vì mặc định về All products.</p>
+                </div>
+                <div>
+                  <h4>Hình ảnh</h4>
+                  <p>Ảnh sản phẩm thật hoặc quy trình; không dùng placeholder SVG khi public.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="playbook-card">
+            <div>
+              <h3>Trust row</h3>
+              <p>Biến cam kết dịch vụ thành tín hiệu tin cậy dễ quét.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Nội dung</h4>
+                  <p>Customization, shipping, secure checkout và customer support.</p>
+                </div>
+                <div>
+                  <h4>Thiết kế</h4>
+                  <p>Bốn icon nét mảnh, border nhẹ; bố cục 4 cột desktop, 2×2 mobile.</p>
+                </div>
+                <div>
+                  <h4>Tuân thủ</h4>
+                  <p>Chỉ dùng claim có thể kiểm chứng và đồng bộ với policy hiện hành.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="playbook-card">
+            <div>
+              <h3>Customer reviews</h3>
+              <p>Social proof phải đến từ khách hàng thật, không từ nội dung mẫu.</p>
+              <div class="playbook-card__grid">
+                <div>
+                  <h4>Nguồn</h4>
+                  <p>Judge.me hoặc app review được phê duyệt, hiển thị qua app block.</p>
+                </div>
+                <div>
+                  <h4>Trạng thái rỗng</h4>
+                  <p>Không render section trên storefront khi chưa có review thật.</p>
+                </div>
+                <div>
+                  <h4>Nghiệm thu</h4>
+                  <p>Không layout shift lớn; review có tên, rating và trạng thái xác thực.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="global">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">04 · Global experience</p>
+            <h2>Header, footer và ngôn ngữ thiết kế</h2>
+          </div>
+          <div>
+            <p class="lead">
+              Homepage chỉ chuyển đổi tốt khi khách luôn có thể tìm kiếm, mở đúng taxonomy,
+              kiểm tra giỏ hàng và xác minh độ tin cậy của doanh nghiệp.
+            </p>
+          </div>
+        </div>
+
+        <div class="two-column">
+          <article class="panel">
+            <h3>Header và navigation</h3>
+            <ul>
+              <li>Thay wordmark mặc định bằng logo ảnh Meilyzjn có bản thường và inverse.</li>
+              <li>Menu chính: New Arrivals, Best Sellers, Recipients, Occasions, Product Types, About.</li>
+              <li>Giữ search, wishlist và cart luôn dễ nhận biết trên desktop/mobile.</li>
+              <li>Announcement chỉ hiển thị free shipping hoặc coupon thực sự còn hiệu lực.</li>
+              <li>Search mobile nằm ngay dưới header nhưng không lặp lại thành hai form cùng lúc.</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Footer hoàn chỉnh</h3>
+            <ul>
+              <li>Ba nhóm menu: Customer care, Gifting help và About Meilyzjn.</li>
+              <li>Newsletter có giá trị rõ ràng, không chỉ ghi “Sign up”.</li>
+              <li>Contact, social, payment methods và policy links được kiểm tra trước khi public.</li>
+              <li>Không hardcode thông tin doanh nghiệp ở nhiều file Liquid khác nhau.</li>
+              <li>Bỏ “Powered by Shopify” nếu phù hợp với quyết định thương hiệu.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Token</th>
+                <th>Giá trị</th>
+                <th>Vai trò</th>
+                <th>Quy tắc sử dụng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Heritage Teal</td>
+                <td><code>#184D4F</code></td>
+                <td>CTA, header accent, focus và trạng thái chủ động</td>
+                <td>Mỗi content area chỉ có một CTA teal chiếm ưu thế.</td>
+              </tr>
+              <tr>
+                <td>Porcelain Ivory</td>
+                <td><code>#F8F3EA</code></td>
+                <td>Nền chính và vùng thở</td>
+                <td>Luân phiên với trắng để phân tách section, không bọc mọi thứ trong card.</td>
+              </tr>
+              <tr>
+                <td>Charcoal Ink</td>
+                <td><code>#253333</code></td>
+                <td>Text và button editorial</td>
+                <td>Dùng thay pure black để giữ cảm giác ấm.</td>
+              </tr>
+              <tr>
+                <td>Petal Rose / Sage</td>
+                <td><code>#E7C6BE</code> / <code>#CBD8C8</code></td>
+                <td>Campaign và storytelling</td>
+                <td>Chỉ làm màu hỗ trợ; không dùng cho text hoặc CTA tương phản thấp.</td>
+              </tr>
+              <tr>
+                <td>Champagne Gold</td>
+                <td><code>#B58A52</code></td>
+                <td>Kicker, divider và chi tiết premium</td>
+                <td>Dùng tiết chế, không làm màu CTA chính.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="two-column">
+          <article class="panel panel--teal">
+            <h3>Typography</h3>
+            <p><strong>Cormorant Garamond:</strong> H1–H3, editorial quote và campaign heading.</p>
+            <p><strong>Manrope:</strong> navigation, body, price, button, form và product title.</p>
+            <p>Body mobile tối thiểu 16px; heading không dùng uppercase dài; product title ưu tiên khả năng quét.</p>
+          </article>
+          <article class="panel">
+            <h3>Spacing và interaction</h3>
+            <p>Khoảng cách section: 80–120px desktop, 48–72px mobile. Touch target tối thiểu 44px.</p>
+            <p>Dùng border nhẹ thay shadow nặng; animation chỉ cho section reveal và product image hover.</p>
+            <p>Tôn trọng <code>prefers-reduced-motion</code> và giữ focus state luôn nhìn thấy.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="content-section" id="implementation">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">05 · Implementation guide</p>
+            <h2>Thay đổi component và dữ liệu công khai</h2>
+          </div>
+          <div>
+            <p class="lead">
+              Các thay đổi phải giữ khả năng quản trị bằng Theme Editor, tương thích dữ liệu hiện tại
+              và không nhúng collection ID, ảnh hoặc nội dung merchant trực tiếp trong Liquid.
+            </p>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Component</th>
+                <th>Thay đổi interface</th>
+                <th>Hành vi bắt buộc</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>heritage-link-grid</code></td>
+                <td>Thêm collection picker, link override và mobile layout.</td>
+                <td>Link override ưu tiên hơn collection; card thiếu đích hoặc collection rỗng bị ẩn ngoài design mode.</td>
+              </tr>
+              <tr>
+                <td><code>heritage-gift-finder</code></td>
+                <td>Option block gồm dimension, label và filter value; setting chọn base collection.</td>
+                <td>Tạo URL filter an toàn, encode giá trị, bỏ qua lựa chọn trống và disable CTA khi chưa chọn gì.</td>
+              </tr>
+              <tr>
+                <td><code>heritage-reviews</code></td>
+                <td>Section chấp nhận block <code>@app</code>.</td>
+                <td>Không có app block hoặc review thật thì không render section public.</td>
+              </tr>
+              <tr>
+                <td>Trust item</td>
+                <td>Thêm icon, link tùy chọn và màu nền.</td>
+                <td>Giữ tương thích block cũ; icon có accessible name hoặc được đánh dấu decorative.</td>
+              </tr>
+              <tr>
+                <td>Product list</td>
+                <td>Dùng setting có sẵn cho mobile carousel và Quick Add.</td>
+                <td>Ẩn Quick Add khi sold out; không cắt giá, badge hoặc accessible product name.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="sequence" aria-label="Trình tự triển khai">
+          <div class="sequence__step">
+            <span>01</span>
+            <strong>Dữ liệu</strong>
+            <p>Product, collection, metafield, menu và review thật.</p>
+          </div>
+          <div class="sequence__step">
+            <span>02</span>
+            <strong>Component</strong>
+            <p>Grid, finder, reviews, trust và product states.</p>
+          </div>
+          <div class="sequence__step">
+            <span>03</span>
+            <strong>Theme Editor</strong>
+            <p>Ảnh, copy, CTA, collection và thứ tự section.</p>
+          </div>
+          <div class="sequence__step">
+            <span>04</span>
+            <strong>QA</strong>
+            <p>Responsive, accessibility, commerce flow và performance.</p>
+          </div>
+          <div class="sequence__step">
+            <span>05</span>
+            <strong>Preview</strong>
+            <p>Unpublished theme trước khi đưa ra quyết định publish.</p>
+          </div>
+        </div>
+
+        <div class="priority-grid">
+          <div class="priority">
+            <strong>P0 · Chặn phát hành</strong>
+            Ảnh hero/category, link đúng, sản phẩm còn hàng, logo, footer và loại bỏ review mẫu.
+          </div>
+          <div class="priority">
+            <strong>P1 · Tăng chuyển đổi</strong>
+            Gift Finder, Quick Add, recipient grid, collection empty states và navigation taxonomy.
+          </div>
+          <div class="priority">
+            <strong>P2 · Tối ưu</strong>
+            Motion, campaign rotation, content editorial và thử nghiệm merchandising theo mùa.
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section" id="content">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">06 · Content readiness</p>
+            <h2>Checklist dữ liệu trước QA</h2>
+          </div>
+          <div>
+            <p class="lead">
+              Code chỉ tạo khung. Homepage đạt chất lượng khi catalog đủ sâu, ảnh nhất quán và mọi
+              tuyên bố dịch vụ đều đúng với chính sách vận hành thực tế.
+            </p>
+          </div>
+        </div>
+
+        <ul class="checklist">
+          <li>Có tối thiểu 12–20 sản phẩm hoàn chỉnh trước layout QA.</li>
+          <li>Best Sellers có tối thiểu 6 sản phẩm còn hàng.</li>
+          <li>Mỗi sản phẩm có ít nhất 3 ảnh chất lượng cao và alt text mô tả.</li>
+          <li>Hero desktop khoảng 2400×1400 và hero mobile khoảng 900×1200.</li>
+          <li>Sáu occasion card có ảnh và collection/link riêng.</li>
+          <li>Sáu recipient card có ảnh và collection đủ sản phẩm.</li>
+          <li>Featured collections không chứa collection có product count bằng 0.</li>
+          <li>Editorial có ảnh thật và CTA tới trang How to Order.</li>
+          <li>Metafield <code>custom.recipient</code> được populate trên sản phẩm.</li>
+          <li>Metafield <code>custom.occasion</code> được populate trên sản phẩm.</li>
+          <li>Search &amp; Discovery đã bật Recipient, Occasion và Price filters.</li>
+          <li>Main menu và ba footer menu đã được tạo, gán đúng handle.</li>
+          <li>Logo, favicon, social image và metadata dùng thương hiệu Meilyzjn.</li>
+          <li>Free shipping threshold khớp giữa theme và Shopify shipping settings.</li>
+          <li>Judge.me/app review chỉ hiển thị review thật đã duyệt.</li>
+          <li>Contact, shipping, returns, privacy, terms và FAQ đều đã publish.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Điều kiện content quan trọng nhất</strong>
+          Không đưa collection rỗng lên homepage chỉ để hoàn thiện layout. Nếu catalog chưa sẵn sàng,
+          ẩn card hoặc section đó cho đến khi có đủ sản phẩm và ảnh.
+        </div>
+      </section>
+
+      <section class="content-section" id="acceptance">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">07 · Acceptance</p>
+            <h2>Điều kiện nghiệm thu trước khi publish</h2>
+          </div>
+          <div>
+            <p class="lead">
+              Nghiệm thu không chỉ dựa trên ảnh chụp đẹp. Mọi lối vào mua sắm phải hoạt động với dữ
+              liệu thật, trạng thái sản phẩm thật và điều kiện mạng/mobile thực tế.
+            </p>
+          </div>
+        </div>
+
+        <div class="two-column">
+          <article class="panel">
+            <h3>Giao diện và responsive</h3>
+            <ul>
+              <li>Kiểm tra tại 320, 390, 768, 1024 và 1440px.</li>
+              <li>Không horizontal overflow, clipping hoặc carousel bị kẹt.</li>
+              <li>Không còn placeholder, logo chữ hoặc section rỗng trên public preview.</li>
+              <li>Hero crop và text contrast được kiểm tra riêng trên mobile.</li>
+              <li>Nhịp section không tạo khoảng trắng bất thường khi block bị ẩn.</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Commerce flow</h3>
+            <ul>
+              <li>Mọi category card dẫn đúng collection hoặc campaign.</li>
+              <li>Gift Finder tạo đúng URL cho từng dimension và tổ hợp filter.</li>
+              <li>Available, sold-out và discounted product render đúng.</li>
+              <li>Quick Add, wishlist và cart drawer hoạt động trên desktop/mobile.</li>
+              <li>Free shipping messaging khớp cart progress và Shopify rate.</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Accessibility</h3>
+            <ul>
+              <li>Heading hierarchy hợp lệ và mỗi trang chỉ có một H1 nội dung.</li>
+              <li>Keyboard focus rõ, không có interactive element không thể truy cập.</li>
+              <li>Touch target tối thiểu 44×44px.</li>
+              <li>Ảnh nội dung có alt text; icon trang trí được ẩn khỏi screen reader.</li>
+              <li>Reduced motion và zoom 200% không làm mất nội dung.</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>SEO và hiệu năng</h3>
+            <ul>
+              <li>Không còn HapiGifts trong title, description hoặc structured data.</li>
+              <li>Canonical, favicon và social image dùng domain/brand Meilyzjn.</li>
+              <li>LCP mục tiêu dưới 2.5 giây, CLS dưới 0.1.</li>
+              <li>Hero image được ưu tiên; ảnh dưới fold lazy-load.</li>
+              <li>Review app không gây layout shift lớn hoặc chặn render.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="callout callout--risk">
+          <strong>Không publish nếu</strong>
+          Best Sellers vẫn chỉ có một sản phẩm sold out; card vẫn trỏ về All products; testimonial
+          mẫu còn xuất hiện; hoặc homepage vẫn thiếu hero, logo và footer hoàn chỉnh.
+        </div>
+      </section>
+
+      <section class="content-section" aria-labelledby="assumptions-title">
+        <div class="section-intro">
+          <div>
+            <p class="eyebrow">08 · Giả định</p>
+            <h2 id="assumptions-title">Ranh giới của playbook</h2>
+          </div>
+          <div>
+            <ul>
+              <li><code>https://meilyzjn.co/</code> sau refresh là baseline chính thức.</li>
+              <li>Meilyzjn.co là tên storefront; Heritage Gift là hệ thống nhận diện.</li>
+              <li>Chín section không tính announcement, header và footer.</li>
+              <li>Phạm vi chưa bao gồm redesign collection, product, cart hoặc checkout.</li>
+              <li>Catalog, collection và review thật là phụ thuộc dữ liệu, không được thay bằng nội dung giả.</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="source-note">
+          Nguồn đánh giá: storefront Meilyzjn sau khi refresh theme Heritage, cấu trúc theme trong
+          workspace và quan sát homepage Hallmark trên trình duyệt Wmux. Các số liệu là snapshot tại
+          thời điểm đánh giá và có thể thay đổi khi merchant cập nhật catalog.
+        </p>
+
+        <footer class="document-footer">
+          <span>Meilyzjn Homepage Playbook</span>
+          <span>Tài liệu nội bộ · Sẵn sàng cho implementation review</span>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

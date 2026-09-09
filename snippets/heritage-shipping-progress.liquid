@@ -1,0 +1,33 @@
+{% if settings.heritage_shipping_progress and settings.heritage_free_shipping_threshold > 0 %}
+  {% liquid
+    assign threshold_cents = settings.heritage_free_shipping_threshold | times: 100
+    assign remaining = threshold_cents | minus: cart.total_price
+    assign progress = cart.total_price | times: 100.0 | divided_by: threshold_cents
+    if progress > 100
+      assign progress = 100
+    endif
+    if progress < 0
+      assign progress = 0
+    endif
+    assign remaining_money = remaining | money
+  %}
+  <div class="heritage-shipping-progress" aria-live="polite">
+    <p>
+      {% if remaining <= 0 %}
+        Your order qualifies for free standard shipping.
+      {% else %}
+        You're <strong>{{ remaining_money }}</strong> away from free standard shipping.
+      {% endif %}
+    </p>
+    <div
+      class="heritage-shipping-progress__track"
+      role="progressbar"
+      aria-label="Free shipping progress"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      aria-valuenow="{{ progress | round }}"
+    >
+      <span class="heritage-shipping-progress__bar" style="--heritage-progress: {{ progress }}%"></span>
+    </div>
+  </div>
+{% endif %}

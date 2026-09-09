@@ -17,7 +17,9 @@
   assign has_badges = false
   assign badge_position = null
   if product != blank
-    if product.available == false or product.compare_at_price > product.price
+    assign heritage_badge = product.metafields.custom.badge.value | default: product.metafields.custom.badge
+    assign heritage_badge = heritage_badge | upcase | strip
+    if product.available == false or product.compare_at_price > product.price or heritage_badge == 'NEW' or heritage_badge == 'BESTSELLER' or heritage_badge == 'LIMITED'
       assign has_badges = true
       assign badge_position = settings.badge_position
     endif

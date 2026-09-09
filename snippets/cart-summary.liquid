@@ -9,6 +9,7 @@
 {% render 'cart-typography-styles' %}
 
 <div class="cart-totals">
+  {% render 'heritage-shipping-progress' %}
   {% # We need to keep this node in place to allow morphing to work properly # %}
   <div class="cart-totals__original-container cart-primary-typography">
     {%- if cart.cart_level_discount_applications.size > 0 -%}
@@ -269,9 +270,15 @@
     form="cart-form"
   >
     <span class="button-text">
-      {{ 'content.checkout' | t }}
+      Checkout securely
     </span>
   </button>
+
+  <div class="heritage-cart-trust" aria-label="Checkout assurances">
+    <span>{{ settings.heritage_trust_one }}</span>
+    <span>{{ settings.heritage_trust_two }}</span>
+    <span>{{ settings.heritage_trust_three }}</span>
+  </div>
 
   {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons %}
     <div

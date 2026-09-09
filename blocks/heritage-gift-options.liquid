@@ -1,0 +1,89 @@
+{% assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id %}
+
+<heritage-gift-options
+  class="heritage-gift-options spacing-style"
+  style="{% render 'spacing-style', settings: block.settings %}"
+  {{ block.shopify_attributes }}
+>
+  <label class="heritage-gift-options__header">
+    <input
+      type="checkbox"
+      name="properties[Gift wrap]"
+      value="Included"
+      form="{{ product_form_id }}"
+      ref="giftToggle"
+    >
+    <span>
+      <span class="heritage-gift-options__title">{{ block.settings.heading }}</span>
+      <span class="heritage-gift-options__copy">{{ block.settings.description }}</span>
+    </span>
+  </label>
+
+  <div class="heritage-gift-options__message" ref="messagePanel" hidden>
+    <label for="GiftMessage-{{ block.id }}">Gift message</label>
+    <textarea
+      id="GiftMessage-{{ block.id }}"
+      name="properties[Gift message]"
+      form="{{ product_form_id }}"
+      maxlength="250"
+      placeholder="Write a warm note to the recipient"
+      ref="giftMessage"
+      disabled
+    ></textarea>
+    <span class="heritage-character-count" aria-live="polite">
+      <span ref="remainingCharacters">250</span> characters remaining
+    </span>
+  </div>
+</heritage-gift-options>
+
+<script
+  src="{{ 'heritage-gift-options.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
+{% schema %}
+{
+  "name": "Heritage gift options",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Make it a gift"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Gift-ready wrapping is included at no extra charge."
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top padding",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heritage gift options"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,61 @@
+<section class="heritage-testimonials">
+  <div class="section section--page-width">
+    <header class="heritage-testimonials__header">
+      <p class="heritage-kicker">Thoughtfully received</p>
+      <h2 class="heritage-section-heading">{{ section.settings.heading }}</h2>
+    </header>
+    <div class="heritage-testimonials__grid">
+      {% for block in section.blocks %}
+        <figure class="heritage-testimonial" {{ block.shopify_attributes }}>
+          <blockquote>“{{ block.settings.quote }}”</blockquote>
+          <figcaption><cite>{{ block.settings.author }}</cite></figcaption>
+        </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heritage testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Gifts remembered long after they are opened"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "The presentation felt as special as the gift itself."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Verified customer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heritage testimonials",
+      "blocks": [
+        { "type": "testimonial" },
+        { "type": "testimonial" },
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -17,13 +17,14 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "Free standard shipping on orders $75+",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
             "weight": "",
             "letter_spacing": "normal",
-            "case": "none"
+            "case": "none",
+            "text_color": "#FFFFFF"
           },
           "blocks": {}
         }
@@ -35,6 +36,7 @@
       "settings": {
         "speed": 5,
         "section_width": "page-width",
+        "background_color": "{{ settings.color_palette.color1 }}",
         "divider_width": 1,
         "padding-block-start": 15,
         "padding-block-end": 15,
@@ -76,15 +78,15 @@
         }
       },
       "settings": {
-        "logo_position": "left",
+        "logo_position": "center",
         "menu_position": "left",
         "menu_row": "top",
         "show_search": true,
         "search_position": "right",
         "search_row": "top",
-        "show_country": true,
+        "show_country": false,
         "country_selector_style": false,
-        "show_language": true,
+        "show_language": false,
         "localization_font": "heading",
         "localization_font_size": "0.875rem",
         "localization_position": "right",
@@ -99,10 +101,15 @@
         "enable_transparent_header_product": false,
         "enable_transparent_header_collection": false
       }
+    },
+    "heritage_mobile_search": {
+      "type": "heritage-mobile-search",
+      "settings": {}
     }
   },
   "order": [
     "header_announcements_9jGBFp",
-    "header_section"
+    "header_section",
+    "heritage_mobile_search"
   ]
 }

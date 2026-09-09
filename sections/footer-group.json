@@ -55,12 +55,12 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
+                "text": "<h2>Give more thoughtfully</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "h3",
-                "font": "var(--font-body--family)",
+                "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -80,7 +80,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<p>Thoughtful gifting ideas, seasonal inspiration, and first access to new collections.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -112,7 +112,7 @@
                 "border_style": "all",
                 "input_style": "custom",
                 "border_width": 1,
-                "border_radius": 100,
+                "border_radius": 4,
                 "input_background_color": "{{ settings.color_palette.color1 }}",
                 "input_border_color": "",
                 "input_type_preset": "paragraph",
@@ -141,8 +141,8 @@
         "menu_footer": {
           "type": "menu",
           "settings": {
-            "menu": "footer",
-            "heading": "",
+            "menu": "customer-care",
+            "heading": "Customer care",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "plus",
@@ -158,8 +158,25 @@
         "menu_main": {
           "type": "menu",
           "settings": {
-            "menu": "main-menu",
-            "heading": "",
+            "menu": "gifting-help",
+            "heading": "Gifting help",
+            "menu_spacing": 12,
+            "show_as_accordion": false,
+            "accordion_icon": "plus",
+            "accordion_dividers": false,
+            "heading_preset": "paragraph",
+            "link_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "menu_about": {
+          "type": "menu",
+          "settings": {
+            "menu": "about",
+            "heading": "About Meilyzjn",
             "menu_spacing": 12,
             "show_as_accordion": false,
             "accordion_icon": "plus",
@@ -176,7 +193,8 @@
       "block_order": [
         "group_wErUQf",
         "menu_footer",
-        "menu_main"
+        "menu_main",
+        "menu_about"
       ],
       "name": "t:names.footer",
       "settings": {
@@ -193,7 +211,7 @@
         "copyright": {
           "type": "footer-copyright",
           "settings": {
-            "show_powered_by": true,
+            "show_powered_by": false,
             "font_size": "0.75rem",
             "case": "none"
           }
@@ -208,11 +226,11 @@
         "social_icons": {
           "type": "social-links",
           "settings": {
-            "facebook_url": "https://www.facebook.com",
-            "instagram_url": "https://www.instagram.com",
-            "youtube_url": "https://www.youtube.com",
-            "tiktok_url": "https://www.tiktok.com",
-            "twitter_url": "https://www.twitter.com"
+            "facebook_url": "",
+            "instagram_url": "",
+            "youtube_url": "",
+            "tiktok_url": "",
+            "twitter_url": ""
           }
         }
       },

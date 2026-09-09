@@ -1,0 +1,24 @@
+{% liquid
+  assign eyebrow = closest.product.metafields.custom.eyebrow.value
+  if eyebrow == blank
+    assign eyebrow = closest.product.type
+  endif
+%}
+
+{% if eyebrow != blank %}
+  <p class="heritage-kicker heritage-product-eyebrow" {{ block.shopify_attributes }}>
+    {{ eyebrow | escape }}
+  </p>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Heritage eyebrow",
+  "tag": null,
+  "presets": [
+    {
+      "name": "Heritage eyebrow"
+    }
+  ]
+}
+{% endschema %}

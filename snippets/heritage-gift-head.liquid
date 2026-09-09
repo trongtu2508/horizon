@@ -1,0 +1,56 @@
+{% if settings.heritage_brand_fonts %}
+  {{ 'heritage-manrope-latin.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+  {{ 'heritage-cormorant-garamond-latin.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: 'anonymous' }}
+{% endif %}
+
+{{ 'heritage-gift.css' | asset_url | stylesheet_tag: preload: true }}
+
+{% style %}
+  @font-face {
+    font-family: 'Heritage Manrope';
+    src: url('{{ 'heritage-manrope-latin.woff2' | asset_url }}') format('woff2');
+    font-style: normal;
+    font-weight: 400 600;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Heritage Cormorant Garamond';
+    src: url('{{ 'heritage-cormorant-garamond-latin.woff2' | asset_url }}') format('woff2');
+    font-style: normal;
+    font-weight: 500 600;
+    font-display: swap;
+  }
+
+  :root {
+    --heritage-ivory: {{ settings.color_palette.background }};
+    --heritage-charcoal: {{ settings.color_palette.foreground }};
+    --heritage-teal: {{ settings.color_palette.color1 }};
+    --heritage-rose: {{ settings.color_palette.color2 }};
+    --heritage-sage: {{ settings.color_palette.color3 }};
+    --heritage-gold: {{ settings.heritage_gold }};
+    --heritage-border: {{ settings.heritage_border_color }};
+    --heritage-muted: {{ settings.heritage_muted_text }};
+    --heritage-success: #2f765e;
+    --heritage-error: #b64b4b;
+  }
+
+  {% if settings.heritage_brand_fonts %}
+    :root {
+      --font-body--family: 'Heritage Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-body--weight: 400;
+      --font-subheading--family: 'Heritage Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-subheading--weight: 500;
+      --font-heading--family: 'Heritage Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-heading--weight: 500;
+      --font-accent--family: 'Heritage Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-accent--weight: 600;
+    }
+  {% endif %}
+{% endstyle %}
+
+<script
+  src="{{ 'heritage-gift.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>

@@ -113,6 +113,27 @@
     </div>
   {% endif %}
 
+  {% if settings.heritage_wishlist %}
+    <a
+      href="/pages/wishlist"
+      class="header-actions__action heritage-header-wishlist{% if display_style == 'text' %} header-actions__text-style{% endif %}"
+      aria-label="Wishlist"
+    >
+      <span class="{% if display_style == 'icon' %}hidden{% else %}mobile:hidden{% endif %}">
+        Wishlist
+      </span>
+      <span class="svg-wrapper {% if display_style != 'icon' %}desktop:hidden{% endif %}" aria-hidden="true">
+        {{ 'icon-heart.svg' | inline_asset_content }}
+      </span>
+      <span
+        class="heritage-wishlist-count"
+        data-heritage-wishlist-count
+        data-count="0"
+        aria-hidden="true"
+      >0</span>
+    </a>
+  {% endif %}
+
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
     <button
       class="header-actions__action button-unstyled{% if display_style == 'text' %} header-actions__text-style{% endif %}"

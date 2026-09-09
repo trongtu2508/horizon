@@ -1,0 +1,21 @@
+{% assign story = collection.metafields.custom.editorial_story %}
+
+{% if story != blank %}
+  <section class="heritage-collection-story section section--page-width">
+    <div class="heritage-collection-story__inner rte">
+      {{ story | metafield_tag }}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Heritage collection story",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Heritage collection story"
+    }
+  ]
+}
+{% endschema %}

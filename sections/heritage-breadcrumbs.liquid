@@ -1,0 +1,35 @@
+{% liquid
+  assign current_title = page_title
+  if product
+    assign current_title = product.title
+  elsif collection
+    assign current_title = collection.title
+  endif
+%}
+
+<nav class="heritage-breadcrumbs section section--page-width" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="{{ routes.root_url }}">Home</a></li>
+    {% if product and collection %}
+      <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+    {% elsif product and product.collections.first %}
+      <li><a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a></li>
+    {% endif %}
+    <li aria-current="page">{{ current_title }}</li>
+  </ol>
+</nav>
+
+{% schema %}
+{
+  "name": "Heritage breadcrumbs",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Heritage breadcrumbs"
+    }
+  ]
+}
+{% endschema %}

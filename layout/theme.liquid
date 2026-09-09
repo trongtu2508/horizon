@@ -3,6 +3,7 @@
   {% if request.design_mode %}
     class="shopify-design-mode"
   {% endif %}
+  data-heritage-reveal="{{ settings.heritage_reveal_sections }}"
   lang="{{ request.locale.iso_code }}"
 >
   <head>
@@ -42,6 +43,7 @@
     {%- render 'scripts' -%}
     {%- render 'theme-styles-variables' -%}
     {%- render 'color-palette' -%}
+    {%- render 'heritage-gift-head' -%}
 
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}

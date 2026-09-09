@@ -1,0 +1,136 @@
+{% liquid
+  assign material = closest.product.metafields.custom.material.value
+  assign dimensions = closest.product.metafields.custom.dimensions.value
+  assign care = closest.product.metafields.custom.care.value
+  assign packaging = closest.product.metafields.custom.packaging.value
+  assign delivery_note = closest.product.metafields.custom.delivery_note.value
+%}
+
+<div class="heritage-product-accordions" {{ block.shopify_attributes }}>
+  <details open>
+    <summary>
+      {{ block.settings.description_heading | escape }}
+      <span class="svg-wrapper" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span>
+    </summary>
+    <div class="heritage-product-accordions__content rte">
+      {{ closest.product.description }}
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      {{ block.settings.details_heading | escape }}
+      <span class="svg-wrapper" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span>
+    </summary>
+    <div class="heritage-product-accordions__content rte">
+      {% if material != blank %}<p><strong>Material:</strong> {{ material | newline_to_br }}</p>{% endif %}
+      {% if dimensions != blank %}<p><strong>Dimensions:</strong> {{ dimensions | newline_to_br }}</p>{% endif %}
+      {% if care != blank %}<p><strong>Care:</strong> {{ care | newline_to_br }}</p>{% endif %}
+      {% if material == blank and dimensions == blank and care == blank %}
+        <p>{{ block.settings.details_fallback | escape }}</p>
+      {% endif %}
+    </div>
+  </details>
+
+  <details>
+    <summary>
+      {{ block.settings.delivery_heading | escape }}
+      <span class="svg-wrapper" aria-hidden="true">{{ 'icon-plus.svg' | inline_asset_content }}</span>
+    </summary>
+    <div class="heritage-product-accordions__content rte">
+      {% if packaging != blank %}<p>{{ packaging | newline_to_br }}</p>{% endif %}
+      {% if delivery_note != blank %}<p>{{ delivery_note | escape }}</p>{% endif %}
+      <p>{{ block.settings.shipping_fallback | escape }}</p>
+    </div>
+  </details>
+</div>
+
+{% stylesheet %}
+  .heritage-product-accordions {
+    width: 100%;
+    border-block-end: 1px solid var(--heritage-border, currentColor);
+  }
+
+  .heritage-product-accordions details {
+    border-block-start: 1px solid var(--heritage-border, currentColor);
+  }
+
+  .heritage-product-accordions summary {
+    display: flex;
+    min-height: var(--minimum-touch-target, 48px);
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+  }
+
+  .heritage-product-accordions summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .heritage-product-accordions summary .svg-wrapper {
+    flex: 0 0 auto;
+    transition: transform 180ms ease;
+  }
+
+  .heritage-product-accordions details[open] summary .svg-wrapper {
+    transform: rotate(45deg);
+  }
+
+  .heritage-product-accordions__content {
+    padding-block: 0 1rem;
+    color: var(--heritage-muted, currentColor);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .heritage-product-accordions summary .svg-wrapper {
+      transition: none;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Heritage product details",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "description_heading",
+      "label": "Description heading",
+      "default": "Description"
+    },
+    {
+      "type": "text",
+      "id": "details_heading",
+      "label": "Details heading",
+      "default": "Details & care"
+    },
+    {
+      "type": "textarea",
+      "id": "details_fallback",
+      "label": "Details fallback",
+      "default": "Product details and care instructions will be added soon."
+    },
+    {
+      "type": "text",
+      "id": "delivery_heading",
+      "label": "Delivery heading",
+      "default": "Packaging & delivery"
+    },
+    {
+      "type": "textarea",
+      "id": "shipping_fallback",
+      "label": "Shipping and returns message",
+      "default": "Free standard shipping on orders $75+. Easy returns are available according to our return policy."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heritage product details"
+    }
+  ]
+}
+{% endschema %}

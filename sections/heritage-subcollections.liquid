@@ -1,0 +1,39 @@
+{% assign subcollections = collection.metafields.custom.subcollections.value %}
+
+{% if subcollections != blank %}
+  <section class="heritage-subcollections section section--page-width">
+    <p class="heritage-kicker">Explore more</p>
+    <h2 class="heritage-section-heading">Shop this collection</h2>
+    <div class="heritage-subcollections__track">
+      {% for child_collection in subcollections %}
+        {% assign child_image = child_collection.featured_image | default: child_collection.image %}
+        <a class="heritage-link-card" href="{{ child_collection.url }}">
+          {% if child_image %}
+            {{
+              child_image
+              | image_url: width: 900
+              | image_tag: loading: 'lazy', class: 'heritage-link-card__media', widths: '360, 540, 720, 900'
+            }}
+          {% else %}
+            <span class="heritage-link-card__placeholder"></span>
+          {% endif %}
+          <span class="heritage-link-card__content">
+            <span class="heritage-link-card__title">{{ child_collection.title }}</span>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Heritage subcollections",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Heritage subcollections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 130" role="img" aria-labelledby="title desc">
+  <title id="title">Meiyzjn</title>
+  <desc id="desc">Meiyzjn premium gift brand wordmark with a minimal ribbon bloom.</desc>
+  <style>
+    .wordmark {
+      fill: #FFFFFF;
+      font-family: 'Cormorant Infant', 'Cormorant Garamond', Georgia, serif;
+      font-size: 66px;
+      font-weight: 500;
+      letter-spacing: 8px;
+    }
+    .ribbon {
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+  <g aria-hidden="true">
+    <path class="ribbon" d="M260 28 C248 17 232 15 227 24 C223 33 238 38 260 29"/>
+    <path class="ribbon" d="M260 28 C272 17 288 15 293 24 C297 33 282 38 260 29"/>
+    <path class="ribbon" d="M253 31 C245 39 236 43 225 44"/>
+    <path class="ribbon" d="M267 31 C275 39 284 43 295 44"/>
+    <path d="M260 20 L266 27 L260 34 L254 27 Z" fill="#D7B77F"/>
+  </g>
+  <text class="wordmark" x="264" y="101" text-anchor="middle">MEIYZJN</text>
+</svg>

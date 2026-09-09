@@ -1,0 +1,31 @@
+{% assign summary = closest.product.description | strip_html | truncatewords: 30 %}
+
+{% if summary != blank %}
+  <div class="heritage-product-summary rte" {{ block.shopify_attributes }}>
+    <p>{{ summary | escape }}</p>
+  </div>
+{% endif %}
+
+{% stylesheet %}
+  .heritage-product-summary {
+    width: 100%;
+    color: var(--heritage-muted, currentColor);
+    line-height: 1.7;
+  }
+
+  .heritage-product-summary p {
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Heritage product summary",
+  "tag": null,
+  "presets": [
+    {
+      "name": "Heritage product summary"
+    }
+  ]
+}
+{% endschema %}

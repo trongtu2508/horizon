@@ -1,0 +1,24 @@
+{% comment %}
+  Renders a local-browser wishlist toggle. The global Heritage script owns persistence and state sync.
+
+  @param product {product}
+  @param show_label {boolean}
+  @param class {string}
+{% endcomment %}
+
+{% if settings.heritage_wishlist and product != blank %}
+  <button
+    type="button"
+    class="heritage-wishlist-button {{ class }}"
+    data-heritage-wishlist-handle="{{ product.handle }}"
+    data-add-label="Add to wishlist"
+    data-remove-label="Remove from wishlist"
+    aria-label="Add to wishlist"
+    aria-pressed="false"
+  >
+    {{ 'icon-heart.svg' | inline_asset_content }}
+    {% if show_label %}
+      <span data-wishlist-label>Add to wishlist</span>
+    {% endif %}
+  </button>
+{% endif %}

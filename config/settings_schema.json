@@ -2116,5 +2116,84 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Heritage Gift",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Brand settings for the Heritage Gift storefront. Keep the shipping threshold aligned with Settings > Shipping and delivery."
+      },
+      {
+        "type": "checkbox",
+        "id": "heritage_brand_fonts",
+        "label": "Use Heritage brand fonts",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "heritage_gold",
+        "label": "Champagne gold",
+        "default": "#B58A52"
+      },
+      {
+        "type": "color",
+        "id": "heritage_border_color",
+        "label": "Neutral border",
+        "default": "#DED8CE"
+      },
+      {
+        "type": "color",
+        "id": "heritage_muted_text",
+        "label": "Muted text",
+        "default": "#716D67"
+      },
+      {
+        "type": "range",
+        "id": "heritage_free_shipping_threshold",
+        "label": "Free shipping threshold",
+        "min": 0,
+        "max": 500,
+        "step": 5,
+        "unit": "$",
+        "default": 75
+      },
+      {
+        "type": "checkbox",
+        "id": "heritage_shipping_progress",
+        "label": "Show free shipping progress",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "heritage_wishlist",
+        "label": "Enable browser wishlist",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "heritage_reveal_sections",
+        "label": "Reveal sections on scroll",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "heritage_trust_one",
+        "label": "Cart trust message 1",
+        "default": "Secure checkout"
+      },
+      {
+        "type": "text",
+        "id": "heritage_trust_two",
+        "label": "Cart trust message 2",
+        "default": "Easy returns"
+      },
+      {
+        "type": "text",
+        "id": "heritage_trust_three",
+        "label": "Cart trust message 3",
+        "default": "Gift-ready"
+      }
+    ]
   }
 ]

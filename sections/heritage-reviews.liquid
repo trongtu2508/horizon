@@ -1,0 +1,44 @@
+{% liquid
+  assign has_app_block = false
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_block = true
+      break
+    endif
+  endfor
+%}
+
+{% if has_app_block or request.design_mode %}
+  <section class="heritage-reviews section">
+    <div class="section--page-width heritage-reviews__inner">
+      <header class="heritage-reviews__header">
+        {% if section.settings.kicker != blank %}<p class="heritage-kicker">{{ section.settings.kicker }}</p>{% endif %}
+        {% if section.settings.heading != blank %}<h2 class="heritage-section-heading">{{ section.settings.heading }}</h2>{% endif %}
+        {% if section.settings.description != blank %}<p class="heritage-section-copy">{{ section.settings.description }}</p>{% endif %}
+      </header>
+
+      {% if has_app_block %}
+        <div class="heritage-reviews__app">{% content_for 'blocks' %}</div>
+      {% else %}
+        <div class="heritage-reviews__empty">Add your review app block here. This section stays hidden from customers until verified review content is connected.</div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Heritage verified reviews",
+  "settings": [
+    { "type": "text", "id": "kicker", "label": "Kicker", "default": "Loved by gift-givers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Real gifts. Real reactions." },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "Verified reviews from customers who chose Meilyzjn for a meaningful moment." }
+  ],
+  "blocks": [
+    { "type": "@app" }
+  ],
+  "presets": [
+    { "name": "Heritage verified reviews" }
+  ]
+}
+{% endschema %}

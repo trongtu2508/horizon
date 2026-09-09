@@ -1,0 +1,76 @@
+<div class="heritage-mobile-search">
+  <form action="{{ routes.search_url }}" method="get" role="search" class="section section--page-width">
+    <label class="visually-hidden" for="HeritageMobileSearch">Search</label>
+    <input
+      id="HeritageMobileSearch"
+      type="search"
+      name="q"
+      value="{{ search.terms | escape }}"
+      placeholder="Search thoughtful gifts"
+      autocomplete="off"
+    >
+    <button type="submit" class="button-unstyled" aria-label="Search">
+      {{ 'icon-search.svg' | inline_asset_content }}
+    </button>
+  </form>
+</div>
+
+{% stylesheet %}
+  .heritage-mobile-search {
+    display: none;
+    background: var(--heritage-ivory);
+    border-bottom: 1px solid var(--heritage-border);
+  }
+
+  .heritage-mobile-search form {
+    position: relative;
+    padding-block: 0.6rem 0.75rem;
+  }
+
+  .heritage-mobile-search input {
+    width: 100%;
+    height: 2.75rem;
+    padding-inline: 1rem 3rem;
+    border: 1px solid var(--heritage-border);
+    border-radius: 0;
+    background: #fff;
+    color: var(--heritage-charcoal);
+    font-size: 1rem;
+  }
+
+  .heritage-mobile-search button {
+    position: absolute;
+    top: 50%;
+    right: calc(var(--page-margin) + 0.9rem);
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    transform: translateY(-50%);
+  }
+
+  .heritage-mobile-search svg {
+    width: 1.2rem;
+  }
+
+  @media screen and (max-width: 749px) {
+    .heritage-mobile-search {
+      display: block;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Heritage mobile search",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "Heritage mobile search"
+    }
+  ]
+}
+{% endschema %}

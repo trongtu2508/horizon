@@ -1,0 +1,16 @@
+<div class="heritage-product-wishlist" {{ block.shopify_attributes }}>
+  {% render 'heritage-wishlist-button', product: closest.product, show_label: true %}
+</div>
+
+{% schema %}
+{
+  "name": "Heritage product wishlist",
+  "tag": null,
+  "settings": [],
+  "presets": [
+    {
+      "name": "Heritage product wishlist"
+    }
+  ]
+}
+{% endschema %}

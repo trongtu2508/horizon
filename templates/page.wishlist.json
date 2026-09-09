@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "wishlist": {
+      "type": "heritage-wishlist",
+      "settings": {
+        "heading": "Your wishlist",
+        "description": "A quiet place for thoughtful gifts you would love to return to."
+      }
+    }
+  },
+  "order": ["wishlist"]
+}

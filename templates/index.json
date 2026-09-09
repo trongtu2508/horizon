@@ -16,13 +16,39 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
+            "text": "<h1>Personal gifts for the moments they will always remember</h1>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
-            "type_preset": "h2",
+            "type_preset": "h1",
+            "font": "var(--font-heading--family)",
+            "font_size": "",
+            "line_height": "tight",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_intro": {
+          "type": "text",
+          "name": "Introduction",
+          "settings": {
+            "text": "<p>Celebrate the people you love with keepsakes made personal, from milestone moments to everyday reminders that they matter.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "paragraph",
             "font": "var(--font-body--family)",
-            "font_size": "1rem",
+            "font_size": "1.125rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -42,13 +68,13 @@
           "type": "button",
           "name": "t:names.button",
           "settings": {
-            "label": "Shop all",
+            "label": "Find a meaningful gift",
             "link": "shopify://collections/all",
             "open_in_new_tab": false,
-            "style_class": "button-custom",
-            "custom_button_background": "rgba(0, 0, 0, 0)",
-            "custom_button_text": "{{ settings.color_palette.background }}",
-            "custom_button_border": "{{ settings.color_palette.background }}",
+            "style_class": "button-primary",
+            "custom_button_background": "{{ settings.color_palette.color1 }}",
+            "custom_button_text": "#ffffff",
+            "custom_button_border": "{{ settings.color_palette.color1 }}",
             "width": "fit-content",
             "custom_width": 100,
             "width_mobile": "fit-content",
@@ -59,6 +85,7 @@
       },
       "block_order": [
         "text_YLPk4p",
+        "text_intro",
         "button_H9gpTf"
       ],
       "name": "t:names.hero",
@@ -70,22 +97,43 @@
         "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
+        "vertical_alignment": "center",
         "align_baseline": true,
         "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
+        "section_width": "full-width",
+        "section_height": "large",
         "section_height_custom": 50,
         "toggle_overlay": true,
-        "overlay_color": "#12121266",
+        "overlay_color": "#184D4F66",
         "overlay_style": "solid",
         "gradient_direction": "to bottom",
         "blurred_reflection": false,
         "reflection_opacity": 75,
-        "padding-block-start": 100,
-        "padding-block-end": 72
+        "custom_mobile_media": true,
+        "stack_media_on_mobile": false,
+        "padding-block-start": 96,
+        "padding-block-end": 80
+      }
+    },
+    "heritage_occasions": {
+      "type": "heritage-link-grid",
+      "blocks": {
+        "birthday": { "type": "link", "settings": { "collection": "birthday", "title": "Birthday", "subtitle": "Celebrate their day", "link": "" } },
+        "anniversary": { "type": "link", "settings": { "collection": "anniversary", "title": "Anniversary", "subtitle": "Honor every chapter", "link": "" } },
+        "memorial": { "type": "link", "settings": { "collection": "memorial", "title": "Memorial", "subtitle": "Keep their memory close", "link": "" } },
+        "graduation": { "type": "link", "settings": { "collection": "graduation", "title": "Graduation", "subtitle": "Mark a proud new beginning", "link": "" } },
+        "christmas": { "type": "link", "settings": { "collection": "christmas", "title": "Christmas", "subtitle": "Traditions made personal", "link": "" } },
+        "seasonal": { "type": "link", "settings": { "collection": "seasonal", "title": "Seasonal moments", "subtitle": "Gifts made for right now", "link": "" } }
+      },
+      "block_order": ["birthday", "anniversary", "memorial", "graduation", "christmas", "seasonal"],
+      "settings": {
+        "kicker": "Find the right moment",
+        "heading": "Shop by occasion",
+        "description": "Gifts curated for the milestones, memories, and everyday moments worth celebrating.",
+        "columns": 3,
+        "mobile_layout": "carousel"
       }
     },
     "product_list_fa6P9H": {
@@ -127,12 +175,12 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
+                "text": "<h2>Best sellers</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
+                "type_preset": "h2",
+                "font": "var(--font-heading--family)",
                 "font_size": "",
                 "line_height": "normal",
                 "letter_spacing": "normal",
@@ -256,27 +304,125 @@
       },
       "name": "t:names.featured_collection",
       "settings": {
-        "collection": "all",
+        "collection": "best-sellers",
         "layout_type": "grid",
-        "carousel_on_mobile": false,
+        "carousel_on_mobile": true,
         "max_products": 8,
         "columns": 4,
         "mobile_columns": "2",
         "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
+        "columns_gap": 20,
+        "rows_gap": 32,
         "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "page-width",
         "horizontal_alignment": "flex-start",
         "gap": 28,
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 80,
+        "padding-block-end": 80
+      }
+    },
+    "heritage_gift_finder": {
+      "type": "heritage-gift-finder",
+      "blocks": {
+        "recipient_her": { "type": "option", "settings": { "dimension": "recipient", "label": "For her", "value": "For her" } },
+        "recipient_him": { "type": "option", "settings": { "dimension": "recipient", "label": "For him", "value": "For him" } },
+        "recipient_couple": { "type": "option", "settings": { "dimension": "recipient", "label": "For a couple", "value": "Couples" } },
+        "occasion_birthday": { "type": "option", "settings": { "dimension": "occasion", "label": "Birthday", "value": "Birthday" } },
+        "occasion_anniversary": { "type": "option", "settings": { "dimension": "occasion", "label": "Anniversary", "value": "Anniversary" } },
+        "occasion_memorial": { "type": "option", "settings": { "dimension": "occasion", "label": "Memorial", "value": "Memorial" } },
+        "budget_35": { "type": "option", "settings": { "dimension": "budget", "label": "Under $35", "value": "35" } },
+        "budget_50": { "type": "option", "settings": { "dimension": "budget", "label": "Under $50", "value": "50" } },
+        "budget_75": { "type": "option", "settings": { "dimension": "budget", "label": "Under $75", "value": "75" } }
+      },
+      "block_order": ["recipient_her", "recipient_him", "recipient_couple", "occasion_birthday", "occasion_anniversary", "occasion_memorial", "budget_35", "budget_50", "budget_75"],
+      "settings": {
+        "kicker": "A quicker way to choose",
+        "heading": "Find their gift",
+        "description": "Start with who it is for, the moment, or your budget. We will narrow down the collection.",
+        "collection": "all",
+        "button_label": "Show matching gifts"
+      }
+    },
+    "heritage_recipients": {
+      "type": "heritage-link-grid",
+      "blocks": {
+        "mother": { "type": "link", "settings": { "collection": "gifts-for-mom", "title": "Mom", "subtitle": "Made as special as she is", "link": "" } },
+        "father": { "type": "link", "settings": { "collection": "gifts-for-dad", "title": "Dad", "subtitle": "A keepsake he will treasure", "link": "" } },
+        "couples": { "type": "link", "settings": { "collection": "gifts-for-couples", "title": "Couples", "subtitle": "Celebrate their story", "link": "" } },
+        "friends": { "type": "link", "settings": { "collection": "gifts-for-friends", "title": "Best friends", "subtitle": "For the bond you share", "link": "" } },
+        "grandparents": { "type": "link", "settings": { "collection": "gifts-for-grandparents", "title": "Grandparents", "subtitle": "Family memories made visible", "link": "" } },
+        "yourself": { "type": "link", "settings": { "collection": "gifts-for-yourself", "title": "Yourself", "subtitle": "Keep what matters close", "link": "" } }
+      },
+      "block_order": ["mother", "father", "couples", "friends", "grandparents", "yourself"],
+      "settings": {
+        "kicker": "Make it personal",
+        "heading": "Shop by recipient",
+        "description": "Begin with the person who makes the gift meaningful.",
+        "columns": 3,
+        "mobile_layout": "grid"
+      }
+    },
+    "heritage_editorial": {
+      "type": "heritage-editorial",
+      "settings": {
+        "background": "#CBD8C8",
+        "reverse": false,
+        "kicker": "Personalized by you",
+        "heading": "Their story belongs in the gift",
+        "text": "<p>Add the names, dates, and details that make a keepsake unmistakably theirs. We turn your thoughtful choice into something they can hold onto.</p>",
+        "button_label": "Explore personalized gifts",
+        "button_link": ""
+      }
+    },
+    "heritage_curated": {
+      "type": "heritage-link-grid",
+      "blocks": {
+        "ornaments": { "type": "link", "settings": { "collection": "ornaments", "title": "Personalized ornaments", "subtitle": "A tradition made entirely yours", "link": "" } },
+        "new_arrivals": { "type": "link", "settings": { "collection": "new-arrivals", "title": "New arrivals", "subtitle": "Fresh ways to make it meaningful", "link": "" } },
+        "america_250": { "type": "link", "settings": { "collection": "america-250", "title": "America 250", "subtitle": "Keepsakes for a historic celebration", "link": "" } },
+        "memorial": { "type": "link", "settings": { "collection": "memorial", "title": "Memorial gifts", "subtitle": "Remembered with love", "link": "" } }
+      },
+      "block_order": ["ornaments", "new_arrivals", "america_250", "memorial"],
+      "settings": {
+        "kicker": "Chosen for the moment",
+        "heading": "Featured collections",
+        "description": "The keepsakes and gifting stories our community is exploring now.",
+        "columns": 4,
+        "mobile_layout": "carousel"
+      }
+    },
+    "heritage_trust": {
+      "type": "heritage-trust-row",
+      "blocks": {
+        "personalized": { "type": "trust", "settings": { "icon": "sparkle", "heading": "Made personal", "text": "Names, dates, and details chosen by you", "link": "" } },
+        "delivery": { "type": "trust", "settings": { "icon": "globe", "heading": "Tracked delivery", "text": "Clear updates from our studio to your door", "link": "" } },
+        "checkout": { "type": "trust", "settings": { "icon": "shield", "heading": "Secure checkout", "text": "Protected payment from cart to confirmation", "link": "" } },
+        "support": { "type": "trust", "settings": { "icon": "support", "heading": "Helpful support", "text": "Real guidance when you need a hand", "link": "" } }
+      },
+      "block_order": ["personalized", "delivery", "checkout", "support"],
+      "settings": { "kicker": "Gifting with confidence", "heading": "Thoughtful from start to finish", "background": "#F8F3EA" }
+    },
+    "heritage_reviews": {
+      "type": "heritage-reviews",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "kicker": "Loved by gift-givers",
+        "heading": "Real gifts. Real reactions.",
+        "description": "Verified reviews from customers who chose Meilyzjn for a meaningful moment."
       }
     }
   },
   "order": [
     "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "heritage_occasions",
+    "product_list_fa6P9H",
+    "heritage_gift_finder",
+    "heritage_recipients",
+    "heritage_curated",
+    "heritage_editorial",
+    "heritage_trust",
+    "heritage_reviews"
   ]
 }
