@@ -24,7 +24,7 @@
             "weight": "",
             "letter_spacing": "normal",
             "case": "none",
-            "text_color": "#2F3035"
+            "text_color": "#2f3035"
           },
           "blocks": {}
         }
@@ -34,18 +34,18 @@
       ],
       "name": "t:names.announcement_bar",
       "settings": {
-        "utility_layout": true,
-        "store_text": "Find a store",
+        "utility_layout": false,
+        "store_text": "",
         "store_link": "shopify://pages/contact",
         "offers_text": "Offers",
         "offers_link": "shopify://collections/all",
         "speed": 5,
         "section_width": "page-width",
-        "background_color": "#F7F2EF",
+        "background_color": "#f7f2ef",
         "divider_width": 1,
+        "divider_color": "{{ settings.color_palette.color3 }}",
         "padding-block-start": 7,
-        "padding-block-end": 7,
-        "divider_color": "{{ settings.color_palette.color3 }}"
+        "padding-block-end": 7
       }
     },
     "header_section": {
@@ -66,6 +66,8 @@
           "static": true,
           "settings": {
             "menu": "main-menu",
+            "background_color": "{{ settings.color_palette.background }}",
+            "text_color": "",
             "type_font_primary_size": "0.875rem",
             "menu_font_style": "inverse",
             "type_font_primary_link": "body",
@@ -75,6 +77,8 @@
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
             "navigation_bar": false,
+            "background_color_navigation_bar": "{{ settings.color_palette.background }}",
+            "text_color_navigation_bar": "",
             "drawer_accordion": false,
             "drawer_accordion_expand_first": false,
             "drawer_dividers": false
@@ -85,7 +89,12 @@
       "settings": {
         "logo_position": "left",
         "menu_position": "center",
+<<<<<<< HEAD
         "menu_row": "top",
+=======
+        "menu_row": "bottom",
+        "customer_account_menu": "customer-account-main-menu",
+>>>>>>> b4aa98f22690411507bad823a54f527f4e6a18e5
         "show_search": true,
         "search_position": "right",
         "search_row": "top",
@@ -99,12 +108,31 @@
         "section_width": "page-width",
         "section_height": "standard",
         "enable_sticky_header": "always",
-        "divider_width": 0.5,
+        "divider_width": 0,
         "divider_size": "page-width",
+        "divider_color": "",
         "border_width": 0.5,
+        "bottom_border_color": "",
+        "actions_display_style": "icon",
+        "actions_font_size": "0.875rem",
+        "actions_font": "body",
+        "actions_text_case": "none",
+        "background_color_top": "",
+        "text_color_top": "",
+        "background_color_bottom": "",
+        "text_color_bottom": "",
+        "bubble_style": "default",
+        "bubble_background_color": "",
+        "bubble_text_color": "",
         "enable_transparent_header_home": false,
+        "home_inverse_logo": false,
+        "text_color_transparent_home": "",
         "enable_transparent_header_product": false,
-        "enable_transparent_header_collection": false
+        "product_inverse_logo": false,
+        "text_color_transparent_product": "",
+        "enable_transparent_header_collection": false,
+        "collection_inverse_logo": false,
+        "text_color_transparent_collection": ""
       }
     },
     "heritage_mega_navigation": {
