@@ -70,11 +70,7 @@
             "menu_font_style": "inverse",
             "type_font_primary_link": "body",
             "type_case_primary_link": "none",
-            "menu_style": "hallmark_promo",
-            "promo_heading": "Gifts made meaningful",
-            "promo_text": "Thoughtful finds for life's most memorable moments.",
-            "promo_link_label": "Shop the collection",
-            "promo_link": "shopify://collections/all",
+            "menu_style": "text",
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
@@ -89,7 +85,7 @@
       "settings": {
         "logo_position": "left",
         "menu_position": "center",
-        "menu_row": "bottom",
+        "menu_row": "top",
         "show_search": true,
         "search_position": "right",
         "search_row": "top",
@@ -111,6 +107,59 @@
         "enable_transparent_header_collection": false
       }
     },
+    "heritage_mega_navigation": {
+      "type": "heritage-mega-navigation",
+      "blocks": {
+        "menu_home": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Home",
+            "link": "/",
+            "menu": "",
+            "highlight": false
+          }
+        },
+        "menu_ornament": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Ornament",
+            "link": "/collections/ornaments",
+            "menu": "ornament",
+            "highlight": true,
+            "promo_heading": "Gifts made meaningful",
+            "promo_text": "Thoughtful finds for life's most memorable moments.",
+            "promo_link_label": "Shop the collection",
+            "promo_link": "/collections/ornaments"
+          }
+        },
+        "menu_catalog": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Catalog",
+            "link": "shopify://collections/all",
+            "menu": "",
+            "highlight": false
+          }
+        },
+        "menu_contact": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Contact",
+            "link": "shopify://pages/contact",
+            "menu": "",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": ["menu_home", "menu_ornament", "menu_catalog", "menu_contact"],
+      "name": "Mega navigation",
+      "settings": {
+        "section_width": "page-width",
+        "background_color": "#FFFFFF",
+        "text_color": "#2F3035",
+        "border_color": "#D7D3D0"
+      }
+    },
     "heritage_mobile_search": {
       "type": "heritage-mobile-search",
       "settings": {}
@@ -119,6 +168,7 @@
   "order": [
     "header_announcements_9jGBFp",
     "header_section",
+    "heritage_mega_navigation",
     "heritage_mobile_search"
   ]
 }
