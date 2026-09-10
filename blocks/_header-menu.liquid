@@ -159,7 +159,8 @@
                       grid_columns_count_collection_images: 8,
                       menu_content_type: menu_content_type,
                       content_aspect_ratio: ratio,
-                      image_border_radius: image_border_radius
+                      image_border_radius: image_border_radius,
+                      block: block
                     %}
                   </div>
                 </div>
@@ -624,6 +625,116 @@
     scrollbar-color: rgb(var(--color-foreground-rgb) / var(--opacity-40)) transparent;
   }
 
+  .header--hallmark .menu-list__submenu-inner {
+    padding-block: 24px 30px;
+  }
+
+  .header--hallmark .mega-menu {
+    max-width: 1540px;
+    margin-inline: auto;
+  }
+
+  .header--hallmark .mega-menu__grid {
+    column-gap: clamp(28px, 3vw, 58px);
+  }
+
+  .header--hallmark .mega-menu__shop-all {
+    display: inline-flex;
+    grid-column: 1 / -1;
+    align-items: center;
+    gap: 7px;
+    margin-block-end: 20px;
+    color: var(--menu-child-active-font-color);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .header--hallmark .mega-menu__shop-all svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .header--hallmark .mega-menu__link--parent {
+    margin-block-end: 7px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .header--hallmark .mega-menu__link:not(.mega-menu__link--parent) {
+    padding-block: 5px;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .header--hallmark .menu-list__link-title {
+    padding-inline: clamp(9px, 1.05vw, 18px);
+  }
+
+  .header--hallmark .menu-list__link {
+    font-weight: 600;
+  }
+
+  .mega-menu__promotion {
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    min-width: 0;
+  }
+
+  .mega-menu__promotion-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 210px;
+    padding: 24px;
+    overflow: hidden;
+    background: #f7f1ee;
+    color: #24211f;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .mega-menu__promotion-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .mega-menu__promotion-image + .mega-menu__promotion-copy {
+    margin-top: 14px;
+  }
+
+  .mega-menu__promotion-heading,
+  .mega-menu__promotion-text {
+    display: block;
+  }
+
+  .mega-menu__promotion-heading {
+    margin: 0;
+    font-family: var(--font-heading--family);
+    font-size: clamp(20px, 1.6vw, 30px);
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  .mega-menu__promotion-text {
+    margin: 8px 0 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .mega-menu__promotion-link {
+    align-self: center;
+    margin-top: 10px;
+    color: var(--menu-child-active-font-color);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   .mega-menu__link {
     font-family: var(--menu-child-font-family);
     font-style: var(--menu-child-font-style);
@@ -963,9 +1074,50 @@
         {
           "value": "featured_collections",
           "label": "t:options.featured_collections"
+        },
+        {
+          "value": "hallmark_promo",
+          "label": "Hallmark-style promotion"
         }
       ],
       "default": "collection_images"
+    },
+    {
+      "type": "header",
+      "content": "Mega menu promotion"
+    },
+    {
+      "type": "image_picker",
+      "id": "promo_image",
+      "label": "Image",
+      "visible_if": "{{ block.settings.menu_style == 'hallmark_promo' }}"
+    },
+    {
+      "type": "text",
+      "id": "promo_heading",
+      "label": "Heading",
+      "default": "Gifts made meaningful",
+      "visible_if": "{{ block.settings.menu_style == 'hallmark_promo' }}"
+    },
+    {
+      "type": "textarea",
+      "id": "promo_text",
+      "label": "Text",
+      "default": "Thoughtful finds for every occasion.",
+      "visible_if": "{{ block.settings.menu_style == 'hallmark_promo' }}"
+    },
+    {
+      "type": "text",
+      "id": "promo_link_label",
+      "label": "Link label",
+      "default": "Shop the collection",
+      "visible_if": "{{ block.settings.menu_style == 'hallmark_promo' }}"
+    },
+    {
+      "type": "url",
+      "id": "promo_link",
+      "label": "Link",
+      "visible_if": "{{ block.settings.menu_style == 'hallmark_promo' }}"
     },
     {
       "type": "select",

@@ -193,7 +193,7 @@
     assign collapse_header_paddings_class = 'header--collapse-row-paddings'
   endif
 
-  assign class = 'header'
+  assign class = 'header header--hallmark'
 
   if header_height_class
     assign class = class | append: ' ' | append: header_height_class
@@ -507,6 +507,81 @@
     .header-actions__action {
       /* reset style from base.css */
       transition: color var(--header-content-transition-timing), border-color var(--header-content-transition-timing);
+    }
+  }
+
+  @media screen and (min-width: 750px) {
+    .header--hallmark {
+      --header-padding: 14px;
+    }
+
+    .header--hallmark .header__row--top .header__columns {
+      min-height: 70px;
+    }
+
+    .header--hallmark .header__row--bottom .header__columns {
+      min-height: 46px;
+      padding-block: 0;
+    }
+
+    .header--hallmark .header__row--bottom .header__column--center {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .header--hallmark .header__row--bottom .header-menu,
+    .header--hallmark .header__row--bottom .header-menu__inner,
+    .header--hallmark .header__row--bottom .menu-list,
+    .header--hallmark .header__row--bottom .overflow-menu {
+      width: 100%;
+    }
+
+    .header--hallmark .header__row--bottom .overflow-menu::part(list) {
+      justify-content: center;
+    }
+
+    .header--hallmark .header__column--right {
+      gap: 10px;
+    }
+
+    .header--hallmark .search-action > button {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 9px;
+      width: clamp(170px, 15vw, 230px);
+      min-height: 38px;
+      padding: 8px 14px;
+      border: 1px solid rgb(var(--color-foreground-rgb) / 0.28);
+      border-radius: 999px;
+    }
+
+    .header--hallmark .search-action > button .svg-wrapper {
+      display: inline-flex;
+      width: 17px;
+      height: 17px;
+    }
+
+    .header--hallmark .hallmark-search-label {
+      display: inline;
+      color: rgb(var(--color-foreground-rgb) / 0.72);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .header--hallmark .header__column--right .search-action,
+    .header--hallmark .header__column--right header-actions {
+      margin-inline: 0;
+    }
+
+    .header--hallmark header-actions {
+      gap: 2px;
+    }
+
+    .header--hallmark .header-actions__action {
+      width: 42px;
+      min-width: 42px;
+      height: 42px;
     }
   }
 

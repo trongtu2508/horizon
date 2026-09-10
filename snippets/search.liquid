@@ -26,6 +26,7 @@
       <span class="svg-wrapper {% if display_style != 'icon' %}desktop:hidden{% endif %}">
         {{ 'icon-search.svg' | inline_asset_content }}
       </span>
+      <span class="hallmark-search-label" aria-hidden="true">Search {{ shop.name }}</span>
     </button>
   </search-button>
 {% endunless %}
@@ -36,6 +37,10 @@
     --search-border-width: var(--style-border-width-inputs);
 
     display: flex;
+  }
+
+  .hallmark-search-label {
+    display: none;
   }
 
   @media screen and (max-width: 749px) {
