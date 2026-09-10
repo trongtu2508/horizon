@@ -141,9 +141,9 @@
         "menu_item_p7VKRD": {
           "type": "menu_item",
           "settings": {
-            "label": "Home",
+            "label": "Occasion",
             "link": "/",
-            "menu": "",
+            "menu": "occasions",
             "highlight": false,
             "promo_heading": "",
             "promo_text": "",
@@ -154,10 +154,11 @@
         "menu_item_97wnLJ": {
           "type": "menu_item",
           "settings": {
-            "label": "Catalog",
+            "label": "Recipients",
             "link": "shopify://collections/all",
-            "menu": "",
+            "menu": "recipients",
             "highlight": false,
+            "promo_image": "shopify://shop_images/meiyzjn-favicon-512.png",
             "promo_heading": "",
             "promo_text": "",
             "promo_link_label": "Shop the collection",
@@ -167,9 +168,35 @@
         "menu_item_LqFdFn": {
           "type": "menu_item",
           "settings": {
-            "label": "Contact",
+            "label": "Decoration",
             "link": "shopify://pages/contact",
-            "menu": "",
+            "menu": "decoration",
+            "highlight": false,
+            "promo_heading": "",
+            "promo_text": "",
+            "promo_link_label": "Shop the collection",
+            "promo_link": ""
+          }
+        },
+        "menu_item_WLNH37": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Accessories",
+            "link": "shopify://pages/contact",
+            "menu": "accessories",
+            "highlight": false,
+            "promo_heading": "",
+            "promo_text": "",
+            "promo_link_label": "Shop the collection",
+            "promo_link": ""
+          }
+        },
+        "menu_item_Wc79CF": {
+          "type": "menu_item",
+          "settings": {
+            "label": "Hobbies",
+            "link": "shopify://pages/contact",
+            "menu": "hobbies",
             "highlight": false,
             "promo_heading": "",
             "promo_text": "",
@@ -181,7 +208,9 @@
       "block_order": [
         "menu_item_p7VKRD",
         "menu_item_97wnLJ",
-        "menu_item_LqFdFn"
+        "menu_item_LqFdFn",
+        "menu_item_WLNH37",
+        "menu_item_Wc79CF"
       ],
       "name": "Mega navigation",
       "settings": {
